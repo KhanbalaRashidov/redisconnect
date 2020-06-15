@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "DotNetEnv/1.4.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/DotNetEnv.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/DotNetEnv.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -2033,6 +2045,19 @@
     }
   },
   "libraries": {
+    "DotNetEnv/1.4.0": {
+      "sha512": "ye3WhbO/bHrgl6C6aE8VKKDewdRxEv1tSSnNMbYE1TxROegwkd1KXo/JjpBcC6nR/FbTpSBPZ2RzjxIimgVlSA==",
+      "type": "package",
+      "path": "dotnetenv/1.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "dotnetenv.1.4.0.nupkg.sha512",
+        "dotnetenv.nuspec",
+        "lib/netstandard1.3/DotNetEnv.dll"
+      ]
+    },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "sha512": "Y4rs5aMEXY8G7wJo5S3EEt6ltqyOTr/qOeZzfn+hw/fuQj5GppGckMY5psGLETo1U9hcT5MmAhaT5xtusM1b5g==",
       "type": "package",
@@ -6727,35 +6752,30 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "DotNetEnv >= 1.4.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.3",
       "StackExchange.Redis >= 2.1.30"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Xanish\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/home/alvan/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Xanish\\source\\repos\\KeyValue\\KeyValue\\KeyValue.csproj",
+      "projectUniqueName": "/home/alvan/Projects/redisconnect/KeyValue.csproj",
       "projectName": "KeyValue",
-      "projectPath": "C:\\Users\\Xanish\\source\\repos\\KeyValue\\KeyValue\\KeyValue.csproj",
-      "packagesPath": "C:\\Users\\Xanish\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Xanish\\source\\repos\\KeyValue\\KeyValue\\obj\\",
+      "projectPath": "/home/alvan/Projects/redisconnect/KeyValue.csproj",
+      "packagesPath": "/home/alvan/.nuget/packages/",
+      "outputPath": "/home/alvan/Projects/redisconnect/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Xanish\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/alvan/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -6772,6 +6792,10 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
+          "DotNetEnv": {
+            "target": "Package",
+            "version": "[1.4.0, )"
+          },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[3.1.3, )"
@@ -6799,7 +6823,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.301/RuntimeIdentifierGraph.json"
       }
     }
   }
