@@ -33,16 +33,16 @@ namespace KeyValue
             {
                 EndPoints =
                 {
-                    { Env.GetString("redis_ip"), Env.GetInt("redis_port") }
+                    { Env.GetString("REDIS_IP"), Env.GetInt("REDIS_PORT") }
                 },
 
                 KeepAlive = 180,
 
-                Password = Env.GetString("redis_pass"),
+                Password = Env.GetString("REDIS_PASS"),
                 ReconnectRetryPolicy = new ExponentialRetry(5000)
             };
             var redis = RedisConnect.Connect();
-            services.AddScoped(x => RedisConnect.Redis);
+            services.AddScoped(rc => RedisConnect.Redis);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

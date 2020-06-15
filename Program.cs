@@ -26,7 +26,7 @@ namespace KeyValue
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseUrls($"http://{Env.GetString("ip")}:{Env.GetInt("port")}");
+                    webBuilder.UseUrls($"http://{Env.GetString("SERVER_IP")}:{Env.GetInt("SERVER_PORT")}");
                     webBuilder.UseStartup<Startup>();
                 });
     }
