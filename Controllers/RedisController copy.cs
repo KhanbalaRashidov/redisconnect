@@ -9,53 +9,48 @@ using StackExchange.Redis;
 
 namespace Redis_Api_Connection.Controllers
 {
-    [Route("api/")]
+    [Route("new-api/")]
     [ApiController]
     [Produces("application/json")]
-    public class RedisController : Controller
+    public class RedisControllerNew : ControllerBase
     {
         private readonly ConnectionMultiplexer _redis;
 
-        public RedisController(ConnectionMultiplexer redis)
+        public RedisControllerNew(ConnectionMultiplexer redis)
         {
             _redis = redis;
         }
 
         [HttpGet("get/{key}/{db:int?}")]
-        public JsonResult Get(string key, int dbIndex = 0)
+        public IActionResult Get(string key, int dbIndex = 0)
         {
 
             var db = _redis.GetDatabase(dbIndex);
             if (key == null)
             {
-                Response.StatusCode = 400;
-                return Json(new
-                {
-                    status = "Error not found key"
-                });
+                return NotFound();
             }
 
-            RedisValue result = db.StringGet(key);
-            
-            return Json(new { value = result.ToString() });
-        }
-        [HttpPost("set/{db:int?}")]
-        
-        public JsonResult Set([FromForm]RedisString redisString, int indexDb = 0)
+            var result = db.StringGet(key);
 
+            return Ok(new { key = result.ToString() });            
+        }
+
+        [HttpPost("set/{db:int?}")]
+        public IActionResult Set([FromForm]RedisString redisString, int indexDb = 0)
         {
             var db = _redis.GetDatabase(indexDb);
             Console.WriteLine($"Database changed to => {indexDb}");
             if (redisString.Key == null || redisString.Value == null)
             {
                 Response.StatusCode = 400;
-                return Json(new { status = "Not fount value" });
+                return NotFound();
             }
 
             Console.WriteLine($"Started setting value {redisString.Key} => {redisString.Value}");
             var res = db.StringSet(redisString.Key, redisString.Value);
             Console.WriteLine("Passed\t[OK]");
-            return Json(new { key = redisString.Key, value = redisString.Value });
+            return Ok(new { key = redisString.Key, value = redisString.Value });
 
         }
 

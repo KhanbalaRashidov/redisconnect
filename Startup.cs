@@ -42,7 +42,7 @@ namespace KeyValue
                 ReconnectRetryPolicy = new ExponentialRetry(5000)
             };
             var redis = RedisConnect.Connect();
-            services.AddScoped(rc => RedisConnect.Redis);
+            services.AddSingleton(rc => RedisConnect.Redis);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
